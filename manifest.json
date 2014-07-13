@@ -1,0 +1,11 @@
+{
+  "name": "Sandbox",
+  "description": "Experimentations with the sandbox",
+  "version": "1.0",
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "icons": { "16": "chrome-16.png", "128": "chrome-128.png" }
+}

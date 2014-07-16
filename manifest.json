@@ -3,6 +3,7 @@
   "name": "Sandbox",
   "description": "Experimentations with the sandbox",
   "version": "1.0",
+  "icons": { "16": "chrome-16.png", "128": "chrome-128.png" },
   "app": {
     "background": {
       "scripts": ["background.js"]
@@ -11,5 +12,29 @@
   "sandbox": {
      "pages": ["window.html"]
   },
-  "icons": { "16": "chrome-16.png", "128": "chrome-128.png" }
+  "permissions": [
+    "clipboardRead",
+    "clipboardWrite",
+    "contextMenus",
+    "storage",
+    "notifications",
+    "syncFileSystem",
+    {
+      "fileSystem": [
+        "write",
+        "retainEntries",
+        "directory"
+      ]
+    }
+  ],
+  "file_handlers": {
+    "text": {
+      "types": [
+          "text/*"
+      ],
+      "title": "Text editor"
+    }
+  },
+  "offline_enabled": true,
+  "kiosk_enabled": false
 }

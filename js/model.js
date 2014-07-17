@@ -1,3 +1,4 @@
+/*
 document.addEventListener('DOMContentLoaded', function() {
   var ret = eval("2 / 1");
   // document.getElementById('res').innerHTML = ret;
@@ -24,6 +25,26 @@ document.addEventListener('DOMContentLoaded', function() {
         reader.readAsText(file);
       });
   	});
+  });
+});
+
+*/ 
+
+var chooseFileButton = document.querySelector('#choose_file');
+
+chooseFileButton.addEventListener('click', function(e) {
+  var accepts = [{
+    mimeTypes: ['text/*'],
+    extensions: ['js', 'css', 'txt', 'html', 'xml', 'tsv', 'csv', 'rtf']
+  }];
+  chrome.fileSystem.chooseEntry({type: 'openFile', accepts: accepts}, function(theEntry) {
+    if (!theEntry) {
+      output.textContent = 'No file selected.';
+      return;
+    }
+    // use local storage to retain access to this file
+    chrome.storage.local.set({'chosenFile': chrome.fileSystem.retainEntry(theEntry)});
+    loadFileEntry(theEntry);
   });
 });
 
